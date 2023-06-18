@@ -203,10 +203,11 @@ public class Sort {
     }
 
     void Merge(int[] list, int p, int q, int r){
-        //var show = new display();
+        var show = new display();
         int n1, n2, i, j, k, t, z;
         n1 = q - p + 1;
         n2 = r - q;
+        System.out.println();
 
         int L[] = new int[n1];
         int R[] = new int[n2];
@@ -214,12 +215,12 @@ public class Sort {
         for(i=0; i<n1; i++){
             L[i] = list[p+i];
         }
-        //show.list(L,n1,"L");
+        show.list(L,n1,"L");
 
         for(j=0; j<n2; j++){
             R[j] = list[q + j + 1];
         }
-        //show.list(R, n2,"R");
+        show.list(R, n2,"R");
 
         i = 0;
         j = 0;
