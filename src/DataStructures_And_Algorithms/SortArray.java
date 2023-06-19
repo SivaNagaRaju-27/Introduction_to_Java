@@ -57,10 +57,9 @@ public class SortArray {
     }
 
     void MergeList(int[] list, int p, int q, int r){
-        int n1, n2, i, j, k;
+        int n1, n2, i, j, k, z, t;
         n1 = q - p + 1;
         n2 = r - q;
-        System.out.println();
 
         int L[] = new int[n1];
         int R[] = new int[n2];
@@ -81,20 +80,13 @@ public class SortArray {
                 i++;
             }else{
                 list[k] = R[j];
+                z = k+1;
+                for(t=0; t<n1-i; t++){
+                    list[z] = L[t+i];
+                    z++;
+                }
                 j++;
             }
-        }
-
-        while(i < n1){
-            list[k] = L[i];
-            k++;
-            i++;
-        }
-
-        while(j < n2){
-            list[k] = R[j];
-            k++;
-            j++;
         }
     }
 
