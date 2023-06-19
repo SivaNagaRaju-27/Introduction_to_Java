@@ -14,13 +14,12 @@ public class Sort {
             System.out.println("[1]: Random List.");
             System.out.println("[2]: Manual List.");
             System.out.println("[3]: Existing List.");
-            System.out.println("[9]: Quit.");
             opt1 = ob.readInt("Choose An Option");
-            System.out.println();
+
             n = ob.readInt("Enter size of the List");
             list = new int[n];
             l1 = new int[n];
-            int l2[] = {52, 45, 86, 31, 41, 85, 59, 49, 85, 61};
+            int l2[] = {10, 60, 20, 65, 25, 53, 42, 50, 90, 50};
 
             switch(opt1){
                 case 1 : flag = 1;
@@ -39,9 +38,6 @@ public class Sort {
                     list = l2;
                 break;
 
-                case 9 : System.out.println("You Choose to Quit...Terminating...!");
-                break;
-
                 default : System.out.println("You Choose an Invalid option...");
             }
 
@@ -55,6 +51,7 @@ public class Sort {
                     System.out.println("[2]: Selection Sort.");
                     System.out.println("[3]: Insertion Sort.");
                     System.out.println("[4]: Merge Sort");
+                    System.out.println("[5]: Quick Sort.");
                     System.out.println("[9]: Input New list.");
                     System.out.println("[99]: Quit.");
                     opt2 = ob.readInt("Choose An Option");
@@ -74,6 +71,10 @@ public class Sort {
 
                         case 4 : l1 = list.clone();
                             sort.mergeSort(list, n);
+                        break;
+
+                        case 5 : l1 = list.clone();
+                            sort.quicksrt(list, n);
                         break;
 
                         case 9 : break;
@@ -238,5 +239,48 @@ public class Sort {
                 j++;
             }
         }
+    }
+
+    void quicksrt(int[] list, int n){
+        var show = new display();
+        var srt = new Sort();
+        
+        int p=0;
+        int r=n-1;
+        quickSortAlg(list, p, r);
+
+        System.out.println("\n\t\tTest Initialized...");
+        System.out.println();
+        show.list(list, n, "Sorted List");
+        srt.test(list, n);
+        System.out.println("\t\tTest Completed...\n");
+    }
+
+    void quickSortAlg(int[] list, int p, int r){
+        var show = new display();
+        if(p<r){
+            show.list(list, p, r);
+            int i, j, temp, x;
+            x = list[r];
+            j = p;
+
+            for(i=p; i<=r; i++){
+                if(list[i] <= x){
+                    if(i != p){
+                        temp = list[j];
+                        list[j] = list[i];
+                        list[i] = temp;
+                    }
+                    j++;
+                }
+            }
+
+            partitionList(list, j-1, p, r);
+        }
+    }
+
+    void partitionList(int[] list, int x, int p, int r){
+        quickSortAlg(list, p, x-1);
+        quickSortAlg(list, x+1, r);
     }
 }
