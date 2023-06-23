@@ -4,12 +4,10 @@ public class primeORnotREC {
     public static void main(String args[])throws Exception{
         var ob = new readInt();
         var ob2 = new primeORnotREC();
-        boolean x;
+
         int p = ob.readInteger("Enter a Number");
 
-        x = ob2.primeORnot(p);
-
-        if(x) System.out.println(p+" is a Prime Number...!");
+        if(ob2.primeORnot(p)) System.out.println(p+" is a Prime Number...!");
         else System.out.println(p+" is Not A Prime Number...!");
     }
 
@@ -18,6 +16,7 @@ public class primeORnotREC {
 
         else if(p > 2){
             int n,i,j,L[];
+
             n = (int) Math.ceil(Math.sqrt(p));
             L = new int[n-1];
 
@@ -28,13 +27,12 @@ public class primeORnotREC {
                     j++;
                 }
             }
-            
+
             for(i=0; i<j; i++){
                 if(p % L[i] == 0){
                     return false;
                 }
             }
-
             return true;
         }
 
